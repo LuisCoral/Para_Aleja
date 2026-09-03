@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Alejandra 🩺</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3EA;
+    --honey:#F0B54E;
+    --blush:#EFA69B;
+    --sage:#93A98C;
+    --plum:#4A3A46;
+    --teal:#6FA6A0;
+    --paper:#FFFDF9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Quicksand', sans-serif;
+    overflow-x:hidden;
+  }
+  .serif{ font-family:'Fraunces', serif; }
+
+  /* floating soft shapes background */
+  .bg-blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.35;
+    z-index:0;
+  }
+
+  section{
+    position:relative;
+    z-index:1;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:60px 24px;
+    text-align:center;
+  }
+
+  /* HERO */
+  .hero-title{
+    font-size:clamp(2.4rem, 7vw, 4.2rem);
+    font-weight:600;
+    font-style:italic;
+    line-height:1.1;
+    max-width:800px;
+    color:var(--plum);
+  }
+  .hero-sub{
+    margin-top:18px;
+    font-size:clamp(1rem, 2vw, 1.25rem);
+    color:var(--teal);
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .hero-date{
+    margin-top:6px;
+    font-size:.95rem;
+    color:#8a7a84;
+  }
+  .critter-row{
+    display:flex;
+    gap:28px;
+    margin-top:46px;
+    align-items:flex-end;
+  }
+  .critter-row svg{
+    width:92px;
+    height:auto;
+    animation: bob 3.2s ease-in-out infinite;
+  }
+  .critter-row svg:nth-child(2){ animation-delay:.4s; width:78px; }
+  .critter-row svg:nth-child(3){ animation-delay:.8s; width:82px; }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:34px;
+    font-size:.85rem;
+    color:#a89aa2;
+  }
+
+  /* MESSAGE SECTION */
+  .card{
+    background:var(--paper);
+    border-radius:28px;
+    padding:52px 42px;
+    max-width:640px;
+    box-shadow: 0 18px 50px -20px rgba(74,58,70,0.25);
+    position:relative;
+  }
+  .card .stitch{
+    position:absolute;
+    inset:14px;
+    border:1.5px dashed rgba(74,58,70,0.15);
+    border-radius:20px;
+    pointer-events:none;
+  }
+  .eyebrow-icon{
+    width:34px;
+    height:34px;
+    margin-bottom:18px;
+  }
+  .msg-title{
+    font-size:clamp(1.6rem, 4vw, 2.1rem);
+    font-weight:600;
+    margin-bottom:22px;
+    color:var(--plum);
+  }
+  .msg-body{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:#5b4a54;
+    text-align:left;
+  }
+  .msg-body p{ margin-bottom:16px; }
+  .signature{
+    margin-top:26px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--teal);
+    text-align:right;
+  }
+
+  /* AFFIRMATION SECTION */
+  .afirm-wrap{
+    max-width:560px;
+  }
+  .afirm-label{
+    font-size:.85rem;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .afirm-box{
+    background:var(--paper);
+    border-radius:24px;
+    padding:44px 36px;
+    box-shadow: 0 18px 50px -22px rgba(74,58,70,0.22);
+    min-height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .afirm-text{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(1.2rem, 3vw, 1.5rem);
+    color:var(--plum);
+    line-height:1.5;
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  .afirm-text.fade{
+    opacity:0;
+    transform:translateY(6px);
+  }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--blush);
+    display:inline-block;
+    margin:0 5px;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  .pulse-dot:nth-child(2){ animation-delay:.2s; }
+  .pulse-dot:nth-child(3){ animation-delay:.4s; }
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); opacity:.5; }
+    50%{ transform:scale(1.4); opacity:1; }
+  }
+  .btn{
+    margin-top:28px;
+    background:var(--teal);
+    color:var(--paper);
+    border:none;
+    padding:14px 32px;
+    border-radius:999px;
+    font-family:'Quicksand', sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    cursor:pointer;
+    transition:transform .2s ease, background .2s ease;
+    box-shadow:0 10px 24px -10px rgba(111,166,160,0.6);
+  }
+  .btn:hover{ transform:translateY(-2px); background:#5f938d; }
+  .btn:active{ transform:translateY(0); }
+  .btn:focus-visible{ outline:3px solid var(--honey); outline-offset:3px; }
+
+  /* footer */
+  footer{
+    padding:50px 24px 70px;
+    text-align:center;
+    color:#a89aa2;
+    font-size:.9rem;
+  }
+  footer .critter-small{ width:50px; margin-bottom:14px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  @media (max-width:480px){
+    .card{ padding:36px 24px; }
+    .critter-row{ gap:16px; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="bg-blob" style="width:340px;height:340px;top:-80px;left:-100px;background:var(--honey);"></svg>
+<svg class="bg-blob" style="width:260px;height:260px;bottom:10%;right:-90px;background:var(--blush);"></svg>
+<svg class="bg-blob" style="width:200px;height:200px;bottom:-60px;left:8%;background:var(--sage);"></svg>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="serif hero-title">Hoy empieza tu rural,<br>Alejandra</p>
+  <p class="hero-sub">y yo no podría estar más orgulloso de ti</p>
+  <p class="hero-date">Primer día · bata puesta · corazón listo</p>
+
+  <div class="critter-row" aria-hidden="true">
+    <!-- honey bear -->
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="30" ry="26" fill="#F0B54E"/>
+      <circle cx="28" cy="30" r="12" fill="#F0B54E"/>
+      <circle cx="72" cy="30" r="12" fill="#F0B54E"/>
+      <circle cx="28" cy="30" r="6" fill="#F6D793"/>
+      <circle cx="72" cy="30" r="6" fill="#F6D793"/>
+      <circle cx="50" cy="45" r="26" fill="#F4C168"/>
+      <ellipse cx="50" cy="54" rx="10" ry="8" fill="#FBF3EA"/>
+      <circle cx="42" cy="40" r="3" fill="#4A3A46"/>
+      <circle cx="58" cy="40" r="3" fill="#4A3A46"/>
+      <ellipse cx="50" cy="52" rx="3.4" ry="2.6" fill="#4A3A46"/>
+      <path d="M45 58 Q50 62 55 58" stroke="#4A3A46" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <rect x="42" y="66" width="16" height="10" rx="3" fill="#EFA69B"/>
+    </svg>
+    <!-- little tiger -->
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="62" rx="26" ry="24" fill="#EFA69B"/>
+      <circle cx="50" cy="42" r="24" fill="#F0B54E"/>
+      <path d="M32 26 L26 12 L40 22 Z" fill="#F0B54E"/>
+      <path d="M68 26 L74 12 L60 22 Z" fill="#F0B54E"/>
+      <path d="M35 24 L31 15" stroke="#4A3A46" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M65 24 L69 15" stroke="#4A3A46" stroke-width="2.4" stroke-linecap="round"/>
+      <ellipse cx="50" cy="50" rx="9" ry="7" fill="#FBF3EA"/>
+      <circle cx="42" cy="38" r="2.8" fill="#4A3A46"/>
+      <circle cx="58" cy="38" r="2.8" fill="#4A3A46"/>
+      <path d="M46 50 Q50 54 54 50" stroke="#4A3A46" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M22 46 Q10 40 8 30" stroke="#EFA69B" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <!-- soft donkey -->
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="64" rx="26" ry="22" fill="#93A98C"/>
+      <ellipse cx="50" cy="40" rx="22" ry="20" fill="#A6BC9E"/>
+      <ellipse cx="30" cy="20" rx="7" ry="14" fill="#A6BC9E" transform="rotate(-15 30 20)"/>
+      <ellipse cx="70" cy="20" rx="7" ry="14" fill="#A6BC9E" transform="rotate(15 70 20)"/>
+      <ellipse cx="30" cy="20" rx="3.4" ry="8" fill="#EFA69B" transform="rotate(-15 30 20)"/>
+      <ellipse cx="70" cy="20" rx="3.4" ry="8" fill="#EFA69B" transform="rotate(15 70 20)"/>
+      <ellipse cx="50" cy="48" rx="9" ry="7" fill="#FBF3EA"/>
+      <circle cx="42" cy="36" r="2.6" fill="#4A3A46"/>
+      <circle cx="58" cy="36" r="2.6" fill="#4A3A46"/>
+      <path d="M46 48 Q50 44 54 48" stroke="#4A3A46" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <rect x="36" y="10" width="28" height="6" rx="3" fill="#EFA69B"/>
+    </svg>
+  </div>
+
+  <p class="scroll-hint">desliza ↓</p>
+</section>
+
+<!-- MESSAGE -->
+<section id="message">
+  <div class="card">
+    <div class="stitch"></div>
+    <svg class="eyebrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21C12 21 4 14.6 4 9.2C4 6.3 6.2 4 9 4C10.5 4 11.6 4.7 12 5.6C12.4 4.7 13.5 4 15 4C17.8 4 20 6.3 20 9.2C20 14.6 12 21 12 21Z" fill="#EFA69B"/>
+    </svg>
+    <h2 class="msg-title serif">Para ti, en tu primer día</h2>
+    <div class="msg-body">
+      <p>Sé que llevas meses imaginando este día: la bata nueva, el fonendo colgado al cuello, los nervios de no saber si vas a acordarte de todo. Y quiero que sepas algo antes de que salgas por esa puerta: ya sabes lo suficiente. Lo demás se aprende ahí, con las manos y con el corazón, que es justo lo que a ti te sobra.</p>
+      <p>Vas a conocer pacientes que te van a enseñar más de lo que cualquier libro pudo enseñarte. Vas a tener turnos larguísimos, dudas a mitad de la noche y días en los que vas a llegar agotada. En esos días, acuérdate de por qué empezaste: porque te importa cuidar a las personas, y eso no se enseña, ya lo traes tú.</p>
+      <p>Yo voy a estar aquí, orgulloso de cada guardia, cada diagnóstico que aciertes y cada vez que dudes de ti sin razón para hacerlo. Confío en ti como en nadie.</p>
+    </div>
+    <p class="signature">Con todo mi cariño, tu bobo favorito 🐻</p>
+  </div>
+</section>
+
+<!-- AFFIRMATIONS -->
+<section id="afirmaciones">
+  <div class="afirm-wrap">
+    <p class="afirm-label serif" style="font-style:italic;">signos vitales del ánimo</p>
+    <div class="afirm-box">
+      <p class="afirm-text serif" id="afirmText">"El buen médico trata la enfermedad; el gran médico trata al paciente que tiene la enfermedad." — Osler</p>
+    </div>
+    <button class="btn" id="nextAfirm" onclick="cambiarFrase()">
+      Otra dosis de ánimo <span class="pulse-dot"></span><span class="pulse-dot"></span><span class="pulse-dot"></span>
+    </button>
+  </div>
+</section>
+
+<footer>
+  <svg class="critter-small" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="50" cy="60" rx="26" ry="22" fill="#F0B54E"/>
+    <circle cx="50" cy="42" r="22" fill="#F4C168"/>
+    <ellipse cx="50" cy="50" rx="8" ry="6" fill="#FBF3EA"/>
+    <circle cx="43" cy="38" r="2.6" fill="#4A3A46"/>
+    <circle cx="57" cy="38" r="2.6" fill="#4A3A46"/>
+  </svg>
+  <p>hecha con cariño para tu primer día de rural · éxitos, doctora Ipial</p>
+</footer>
+
+<script>
+  const frases = [
+    '"El buen médico trata la enfermedad; el gran médico trata al paciente que tiene la enfermedad." — Osler',
+    'Cada paciente que atiendas hoy va a salir mejor por haberte encontrado a ti.',
+    'No tienes que saberlo todo, solo tienes que cuidar con todo lo que sabes.',
+    'Los nervios de hoy son la experiencia de mañana.',
+    'Respira, revisa, confía: has llegado hasta aquí por algo.',
+    'El rural es difícil, pero tú eres de las que no se rinden.',
+    'Cada guardia te hace un poco más médica y un poco más tú.',
+    'Hoy no eres solo estudiante, hoy empiezas a ser doctora de verdad.'
+  ];
+  let idx = 0;
+  const el = document.getElementById('afirmText');
+  function cambiarFrase(){
+    let nuevo;
+    do { nuevo = Math.floor(Math.random()*frases.length); } while(nuevo === idx && frases.length > 1);
+    idx = nuevo;
+    el.classList.add('fade');
+    setTimeout(()=>{
+      el.textContent = frases[idx];
+      el.classList.remove('fade');
+    }, 350);
+  }
+</script>
+
+</body>
+</html>
